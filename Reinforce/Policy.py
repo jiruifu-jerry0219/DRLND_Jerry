@@ -3,7 +3,7 @@ gym.logger.set_level(40) # suppress warnings (please remove if gives error)
 import numpy as np
 from collections import deque
 import matplotlib.pyplot as plt
-%matplotlib inline
+
 
 import torch
 torch.manual_seed(0) # set random seed
@@ -11,6 +11,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.distributions import Categorical
+
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class Policy(nn.Module):
     def __init__(self, s_size=4, h_size=16, a_size=2):
